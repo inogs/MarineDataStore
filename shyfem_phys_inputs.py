@@ -1,4 +1,5 @@
 import argparse
+from attr import dataclass
 def argument():
     parser = argparse.ArgumentParser(description = '''
     Writes out/ files which names like sal_Lid_NRT.csv
@@ -30,23 +31,23 @@ args = argument()
 import copernicusmarine
 from datetime import datetime
 from pathlib import Path
-
+from dataclasses import dataclass
 OUTDIR=Path(args.outdir)
 start_time=datetime.strptime(args.start_time,"%Y%m%d")
 end_time  =datetime.strptime(args.end_time,  "%Y%m%d")
 
+@dataclass
 class Station():
-    def __init__(self, name, lon,lat,shortname):
-        self.name=name
-        self.lon=lon
-        self.lat=lat
-        self.shortname=shortname
+    name:str
+    lon:float
+    lat:float
+    shortname:str
+@dataclass
 class copernicus_dataset():
-    def __init__(self,name,MDSdataset,MDSvar, shortvar):
-        self.name=name
-        self.MDSdataset=MDSdataset
-        self.MDSvar=MDSvar
-        self.shortvar=shortvar
+        name:str
+        MDSdataset:str
+        MDSvar:str
+        shortvar:str
 
 Dataset_1=copernicus_dataset('NRT','cmems_mod_med_phy-sal_anfc_4.2km_P1D-m','so','sal')
 Dataset_2=copernicus_dataset('NRT','cmems_mod_med_phy-tem_anfc_4.2km_P1D-m','thetao','tem')
