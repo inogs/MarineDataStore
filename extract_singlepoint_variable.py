@@ -76,11 +76,11 @@ A= copernicusmarine.subset(dataset_id=dataset,
                         variables=[variable])
 
 
-M2d           = netcdf4.readfile(A.name, variable)[:,0,0]               
-times_days = netcdf4.readfile(A.name, 'time') # days - Here we can have a warning
-Dref = datetime(1900,1,1,0,0,0)
+#M2d           = netcdf4.readfile(A.name, variable)[:,0,0]               
+#times_days = netcdf4.readfile(A.name, 'time') # days - Here we can have a warning
+#Dref = datetime(1900,1,1,0,0,0)
 
-TIMELIST= [Dref + timedelta(days=s) for s in times_days.astype(np.float64) ]
+#TIMELIST= [Dref + timedelta(days=s) for s in times_days.astype(np.float64) ]
 
 #fig,ax=pl.subplots()
 
